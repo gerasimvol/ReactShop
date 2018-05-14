@@ -14,9 +14,7 @@ class App extends React.Component {
   addFish = fish => {
     const fishes = { ...this.state.fishes }
     fishes[`fish${Date.now()}`] = fish
-    this.setState({
-      fishes
-    })
+    this.setState({ fishes })
   }
 
   loadSampleFishes = () => {
@@ -25,8 +23,10 @@ class App extends React.Component {
     })
   }
 
-  addToOrder = () => {
-    
+  addToOrder = fishKey => {
+    const order = { ...this.state.order }
+    order[fishKey] = order[fishKey] + 1 || 1
+    this.setState({ order })
   }
 
   render () {
@@ -42,15 +42,23 @@ class App extends React.Component {
                 return (
                   <Fish
                     key={fishKey}
+                    fishKey={fishKey}
                     details={this.state.fishes[fishKey]}
+                    addToOrder={this.addToOrder}
                   />
                 )
               })
             }
           </ul>
         </div>
-        <Order />
-        <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} />
+        <Order
+          fishes={this.state.fishes}
+          order={this.state.order}
+        />
+        <Inventory
+          addFish={this.addFish}
+          loadSampleFishes={this.loadSampleFishes}
+        />
       </div>
     )
   }
