@@ -4,6 +4,8 @@ import { formatPrice } from './../helpers';
 class Order extends React.Component {
   renderOrder = fishId => {
     const fish = this.props.fishes[fishId]
+    if(!fish) return null
+
     const count = this.props.order[fishId]
     const isAvailable = fish && fish.status === 'available'
 
