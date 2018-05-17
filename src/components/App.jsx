@@ -101,6 +101,7 @@ class App extends React.Component {
           removeFromOrder={this.removeFromOrder}
         />
         <Inventory
+          storeName={this.storeName}
           fishes={this.state.fishes}
           addFish={this.addFish}
           deleteFish={this.deleteFish}
