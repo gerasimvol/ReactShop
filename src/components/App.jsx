@@ -78,7 +78,7 @@ class App extends React.Component {
       <div className="catch-of-the-day">
         <div className="menu">
           <Header
-            tagline="Vol Fish Food"
+            tagline={this.storeName.split('-').join(' ')}
           />
           <ul className="fishes">
             {
