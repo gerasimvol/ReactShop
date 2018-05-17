@@ -1,6 +1,7 @@
 import React from 'react'
 
 class EditFishForm extends React.Component {
+  fishKey = this.props.fishKey
 
   handleChange = event => {
     const fieldName = event.target.name
@@ -10,7 +11,11 @@ class EditFishForm extends React.Component {
         [fieldName]: fieldValue
     }
 
-    this.props.updateFish(this.props.fishKey, updatedFish)
+    this.props.updateFish(this.fishKey, updatedFish)
+  }
+
+  deleteFish = () => {
+    this.props.deleteFish(this.fishKey)
   }
 
   render () {
@@ -52,6 +57,7 @@ class EditFishForm extends React.Component {
           placeholder="Image"
           onChange={this.handleChange}
         />
+        <button onClick={this.deleteFish}>Delete</button>
       </div>
     )
   }

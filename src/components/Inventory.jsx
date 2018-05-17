@@ -13,6 +13,7 @@ class Inventory extends React.Component {
             (fishKey, i) => {
               return <EditFishForm
                 updateFish={this.props.updateFish}
+                deleteFish={this.props.deleteFish}
                 fish={this.props.fishes[fishKey]}
                 fishKey={fishKey}
                 key={fishKey}
